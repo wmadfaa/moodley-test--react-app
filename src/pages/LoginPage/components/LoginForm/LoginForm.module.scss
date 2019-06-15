@@ -1,0 +1,5 @@
+@import "../../../../styles/mixin/Card.mixin.scss";
+
+.form {
+  @include card;
+}

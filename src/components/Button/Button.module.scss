@@ -1,0 +1,61 @@
+@import "../../styles/vars.scss";
+
+.btn {
+  font-size: 14px;
+  font-weight: 300;
+  background: #fff;
+  color: mix(black, $muted-color, 25%);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  &:hover {
+    color: mix(black, $muted-color, 30%);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+  }
+  &.link {
+    background: none;
+    color: $hl-color;
+    box-shadow: none;
+    &:hover {
+      background: none;
+      color: $hl-color;
+      box-shadow: none;
+    }
+  }
+  &.submit {
+    background: $hl-color;
+    color: mix(white, $hl-color, 70%);
+    &:hover {
+      background: darken($hl-color, 5%);
+      color: mix(white, $hl-color, 85%);
+    }
+  }
+  &.cancel {
+    background: #eee;
+    &:hover {
+      background: darken(#eee, 5%);
+      color: mix(black, $muted-color, 30%);
+    }
+  }
+  &.disabled {
+    background: darken(#bbb, 5%);
+    color: black;
+    box-shadow: none;
+    &:hover {
+      color: black;
+      box-shadow: none;
+    }
+  }
+  &.fullWidth {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+}

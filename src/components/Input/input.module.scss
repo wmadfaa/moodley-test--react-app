@@ -1,0 +1,74 @@
+@import "../../styles/vars.scss";
+// https://codepen.io/lewisvrobinson/pen/EyZwjR
+.group {
+  position: relative;
+  margin: 45px 0;
+  width: $width;
+  &.focus .label {
+    top: -14px;
+    font-size: 12px;
+    color: $hl-color;
+  }
+  &.focus .bar:before {
+    width: 100%;
+  }
+  &.invalid,
+  &.focus.invalid {
+    & .bar:before {
+      background: $error-color;
+    }
+    & .input {
+      color: $error-color;
+      border-bottom-color: $error-color;
+    }
+    & .label {
+      color: $error-color;
+    }
+  }
+}
+
+.input {
+  background: none;
+  color: $muted-color;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid $muted-color;
+  &:focus {
+    outline: none;
+  }
+}
+
+.input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+.label {
+  color: $muted-color;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: $trans-time ease all;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  &:before {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0px;
+    position: absolute;
+    background: $hl-color;
+    transition: $trans-time ease all;
+    left: 0%;
+  }
+}

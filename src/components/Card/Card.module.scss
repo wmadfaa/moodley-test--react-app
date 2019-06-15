@@ -1,0 +1,4 @@
+@import "../../styles/mixin/Card.mixin.scss";
+.card {
+  @include card;
+}

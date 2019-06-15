@@ -1,0 +1,55 @@
+@import "../../styles/vars.scss";
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: $trans-time ease all;
+  &.entering {
+    transform: translateY(-400px);
+  }
+
+  &.entered {
+    transform: translateY(0px);
+  }
+
+  &.exiting {
+    transform: translateY(-400px);
+  }
+}
+
+.content {
+  padding: 10px 0;
+}
+
+.overlay {
+  pointer-events: unset;
+  user-select: unset;
+  transition: 600ms ease all;
+  &.entering {
+    filter: blur(3px);
+  }
+
+  &.entered {
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &.exiting {
+    filter: blur(0);
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

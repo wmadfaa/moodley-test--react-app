@@ -1,0 +1,26 @@
+@import "../../styles/mixin/page.mixin.scss";
+
+.wrapper {
+  @include pageWrapper;
+}
+
+.counterValue {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.btnBox {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.input {
+  width: 75px;
+}
+
+.counterControllers {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
