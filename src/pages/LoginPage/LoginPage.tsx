@@ -3,7 +3,6 @@ import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router";
 import { setUserState } from "../../store/user/actions";
-import * as uiActions from "../../store/ui/actions";
 import Heading from "../../components/Heading/Heading";
 import LoginForm, {
   LoginFormValue,
@@ -11,7 +10,6 @@ import LoginForm, {
 } from "./components/LoginForm/LoginForm";
 import styles from "./LoginPage.module.scss";
 import { routes } from "../../routes";
-import { modalContentType } from "../../store/ui/types";
 
 const initialLoginFormValue = {
   mail: "",
@@ -20,21 +18,7 @@ const initialLoginFormValue = {
 
 interface ILoginPageProps extends RouteComponentProps {
   setUserState: typeof setUserState;
-  setModalContent: typeof uiActions.setModalContent;
-  setModalState: typeof uiActions.setModalState;
 }
-
-const ErrorDescription: React.FC = () => {
-  return (
-    <div>
-      Please make sure that your inputs match these types <br />
-      mail: example@mail.com,
-      <br />
-      password: your password
-      <br />
-    </div>
-  );
-};
 
 const LoginPage: React.FC<ILoginPageProps> = props => {
   const [form, setForm] = useState<LoginFormValue>(initialLoginFormValue);
@@ -50,17 +34,8 @@ const LoginPage: React.FC<ILoginPageProps> = props => {
     event: React.FormEvent<HTMLFormElement>,
     formState: LoginFormState
   ) => {
-    event.preventDefault();
-    if (formState.mail !== "invalid" && formState.password !== "invalid") {
-      props.setUserState(true);
-      props.history.push(routes.ROOT);
-    } else {
-      props.setModalContent({
-        title: "invalid inputs",
-        description: <ErrorDescription />
-      });
-      props.setModalState(true);
-    }
+    props.setUserState(true);
+    props.history.push(routes.ROOT);
   };
 
   return (
@@ -83,10 +58,6 @@ const LoginPage: React.FC<ILoginPageProps> = props => {
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setUserState: (authenticated: boolean) =>
     dispatch(setUserState(authenticated)),
-  setModalContent: (modalContent?: modalContentType) =>
-    dispatch(uiActions.setModalContent(modalContent)),
-  setModalState: (modalState: boolean) =>
-    dispatch(uiActions.setModalState(modalState))
 });
 
 export default connect(
